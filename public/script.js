@@ -120,7 +120,12 @@ socket.on('updateListOfUsers', (listOfUsers) => {
         li.classList.add('cl-item');
         listElement.appendChild(li);
     });
-    console.log(listOfUsers)
+
+    const pCount = document.querySelector('p#cl-count');
+    pCount.innerHTML =
+        listOfUsers.length !== 1
+            ? `<b><i>${listOfUsers.length} usuarios conectados</b></i>`
+            : `<b><i>${listOfUsers.length} usuario conectado</b></i>`;
 });
 
 window.addEventListener('unload', () => {

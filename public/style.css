@@ -137,7 +137,8 @@ button {
 
 .connected_list>p {
     padding: 1em;
-    border-bottom: 1px solid #333;
+    font-size: smaller;
+    background-color: var(--border-color);
 }
 
 .cl-item {
