@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="app">
+      <div class="user">
+        <div>
+          <p><i><b>Usuario:</b></i></p>
+          <p id="showusername"></p>
+        </div>
+        <button id="logout">Salir</button>
+      </div>
+      <div class="chat">
+        <div id="messages">
+        </div>
+        <div class="chat-input chatb" id="chatinput">
+          <form id="form" action="">
+            <input id="input" autocomplete="off" />
+            <button>Enviar</button>
+          </form>
+        </div>
+      </div>
+      <div class="connected_list" >
+        <p><b><i>Usuarios conectados:</i></b></p>
+        <ul id="listOfUsers">
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <script src="/session.js"  type="text/javascript"></script>
+  <script src="/script.js"  type="text/javascript"></script>
+</html>
