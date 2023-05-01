@@ -47,30 +47,49 @@ socket.emit('userConnected', username);
 socket.on('newMessage', (authorData, msg) => {
     const { username, date } = authorData;
 
-    const li = document.createElement('li');
-    li.innerHTML = `
-          <div>
-            <h3>
-                ${username}
-                <span class="lm-date">- ${parseMessageDate(new Date(date))}</span>
-            </h3>
-            <p>${msg}</p>
-          </div>
-    `
-    listMessages.appendChild(li);
+    const h3 = document.createElement('h3');
+    h3.textContent = username;
+
+    const span = document.createElement('span');
+    span.classList.add('lm-date');
+    span.textContent = ` - ${parseMessageDate(new Date(date))}`;
+
+    h3.appendChild(span);
+
+    const div = document.createElement('div');
+    div.appendChild(h3);
+
+    const p = document.createElement('p');
+    p.classList.add('lm-msg');
+    p.textContent = msg;
+
+    div.appendChild(p);
+
+    listMessages.appendChild(div);
+
     window.scrollTo(0, document.scrollingElement.scrollHeight);
 });
 
 socket.on('connected', () => {
-    const li = document.createElement('li');
-    li.innerHTML = `<b>user connected!</b>`
-    listMessages.appendChild(li);
+    const div = document.createElement('div');
+    div.classList.add('chat-ann');
+
+    const h4 = document.createElement('h4');
+    h4.textContent = 'User connected';
+    div.appendChild(h4);
+
+    listMessages.appendChild(div);
 });
 
 socket.on('disconnected', () => {
-    const li = document.createElement('li');
-    li.innerHTML = `<b>user disconnected :c</b>`
-    listMessages.appendChild(li);
+    const div = document.createElement('div');
+    div.classList.add('chat-ann');
+
+    const h4 = document.createElement('h4');
+    h4.textContent = 'User disconnected';
+    div.appendChild(h4);
+
+    listMessages.appendChild(div);
 });
 
 socket.on('userTyping', (user, state) => {
